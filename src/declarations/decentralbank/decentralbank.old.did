@@ -1,6 +1,6 @@
 service : {
   checkbalance: () -> (float64) query;
-  compoundint: (nat, nat) -> () oneway;
+  compoundint: () -> () oneway;
   deposit: (float64) -> () oneway;
   withdraw: (float64) -> () oneway;
 }
