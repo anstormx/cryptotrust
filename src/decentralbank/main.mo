@@ -4,13 +4,15 @@ import Float "mo:base/Float";
 
 actor debank{ //class declaration
   stable var currentvalueofbank: Float = 1000; 
-  currentvalueofbank := 1000;
+  currentvalueofbank := 10000;
   //declaring a persisted  variable as a float number and not allowing it to be changed even when deployed again
 
   stable var starttime = Time.now(); //declaring a constant variable that stores the current time in nanoseconds
   starttime := Time.now(); 
+  
   public func deposit(amount: Float){  
-      Debug.print(debug_show(currentvalueofbank));  
+    currentvalueofbank += amount;
+    Debug.print(debug_show(currentvalueofbank)); 
   };
 
   public func withdraw(amount: Float){  
