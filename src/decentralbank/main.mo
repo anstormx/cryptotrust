@@ -1,21 +1,36 @@
 import Debug "mo:base/Debug";
-import Nat "mo:base/Nat";
+import Time "mo:base/Time";
+import Float "mo:base/Float";
 
 actor debank{ //class declaration
-  var currentvalueofbank: Nat = 1000; //declaring a variable as a natural number
-  currentvalueofbank := 500; //reassigning the value of the variable
+  stable var currentvalueofbank: Float = 1000; 
+  //declaring a persisted  variable as a float number and not allowing it to be changed even when deployed again
 
-  public func deposit(amount: Nat){  //natural number
-    currentvalueofbank += amount;
+  stable var starttime = Time.now(); //declaring a constant variable that stores the current time in nanoseconds
+
+  public func deposit(amount: Float){  
       Debug.print(debug_show(currentvalueofbank));  
   };
 
-  public func withdraw(amount: Nat){  //natural number
+  public func withdraw(amount: Float){  
     if (amount <= currentvalueofbank){
       currentvalueofbank -= amount;
       Debug.print(debug_show(currentvalueofbank));  
     } else {
       Debug.print("Insufficient funds");
     };
+  };
+
+  public query func checkbalance(): async Float {  
+    return currentvalueofbank;
+  };
+
+  public func compoundint(){
+    let currenttime = Time.now();
+    let elapsedtime = currenttime - starttime; //in nanoseconds
+    let elapsedtimeinsec = elapsedtime / 1000000000; //converting nanoseconds to seconds
+    currentvalueofbank := currentvalueofbank*(1.01**Float.fromInt(elapsedtimeinsec)); //compounding interest formula
+    Debug.print(debug_show(currentvalueofbank));
+    starttime := currenttime;
   };
 }
