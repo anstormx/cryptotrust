@@ -3,12 +3,7 @@ import Time "mo:base/Time";
 import Float "mo:base/Float";
 
 actor debank{ //class declaration
-  stable var currentvalueofbank: Float = 1000; 
-  currentvalueofbank := 10000;
-  //declaring a persisted  variable as a float number and not allowing it to be changed even when deployed again
-
-  stable var starttime = Time.now(); //declaring a constant variable that stores the current time in nanoseconds
-  starttime := Time.now(); 
+  stable var currentvalueofbank: Float = 10000; //declaring a persisted  variable as a float number and not allowing it to be changed even when deployed again
   
   public func deposit(amount: Float){  
     currentvalueofbank += amount;
@@ -28,12 +23,4 @@ actor debank{ //class declaration
     return currentvalueofbank;
   };
 
-  public func compoundint(){
-    let currenttime = Time.now();
-    let elapsedtime = currenttime - starttime; //in nanoseconds
-    let elapsedtimeinsec = elapsedtime / 1000000000; //converting nanoseconds to seconds
-    currentvalueofbank := currentvalueofbank*(1.01**Float.fromInt(elapsedtimeinsec)); //compounding interest formula
-    Debug.print(debug_show(currentvalueofbank));
-    starttime := currenttime;
-  };
 }
