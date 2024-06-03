@@ -1,7 +1,8 @@
 import {
-  debank
+  decentralbank
 } from "../../declarations/decentralbank";
 
-window.addEventListener('load', function () {  //will get executed after the page is loaded
-  console.log("Page loaded");
+window.addEventListener('load', async function() {  //will get executed after the page is loaded
+  const balance = await decentralbank.checkbalance();
+  document.getElementById("value").innerText = Math.round(balance);
 });
