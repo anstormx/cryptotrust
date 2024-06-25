@@ -1,6 +1,6 @@
-# Decentralized-Bank
+# CyptoTrust
 
-Decentralized-Bank is a simple banking application that allows users to deposit and withdraw funds. It is built using Motoko and JavaScript.
+CyptoTrust is a simple banking application that allows users to deposit and withdraw funds. It is built using Motoko and JavaScript.
 
 ## Motoko Backend
 
