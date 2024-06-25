@@ -1,6 +1,6 @@
-# CyptoTrust
+# CryptoTrust
 
-CyptoTrust is a simple banking application that allows users to deposit and withdraw funds. It is built using Motoko and JavaScript.
+CryptoTrust is a simple banking application that allows users to deposit and withdraw funds. It is built using Motoko and JavaScript.
 
 ## Motoko Backend
 
